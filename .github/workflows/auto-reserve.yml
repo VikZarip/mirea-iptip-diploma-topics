@@ -9,6 +9,7 @@ permissions:
 
 jobs:
   reserve:
+    if: contains(github.event.issue.labels.*.name, 'reservation')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
