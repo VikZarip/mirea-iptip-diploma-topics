@@ -1,0 +1,77 @@
+name: Setup Repository Labels
+
+on:
+  workflow_dispatch:  # Запуск вручную
+
+permissions:
+  issues: write
+
+jobs:
+  create-labels:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create labels
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const labels = [
+              {
+                name: 'reservation',
+                description: 'Заявка на резервацию темы',
+                color: '0E8A16'
+              },
+              {
+                name: 'topic-proposal',
+                description: 'Предложение новой темы',
+                color: '1D76DB'
+              },
+              {
+                name: 'pending-review',
+                description: 'Ожидает рассмотрения куратором',
+                color: 'FBCA04'
+              },
+              {
+                name: 'approved',
+                description: 'Одобрено',
+                color: '0E8A16'
+              },
+              {
+                name: 'rejected',
+                description: 'Отклонено',
+                color: 'D93F0B'
+              },
+              {
+                name: 'needs-clarification',
+                description: 'Требуются уточнения',
+                color: 'FEF2C0'
+              }
+            ];
+
+            for (const label of labels) {
+              try {
+                await github.rest.issues.createLabel({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  name: label.name,
+                  description: label.description,
+                  color: label.color
+                });
+                console.log(`✅ Создан лейбл: ${label.name}`);
+              } catch (error) {
+                if (error.status === 422) {
+                  // Лейбл уже существует, обновляем его
+                  await github.rest.issues.updateLabel({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    name: label.name,
+                    description: label.description,
+                    color: label.color
+                  });
+                  console.log(`🔄 Обновлён лейбл: ${label.name}`);
+                } else {
+                  console.error(`❌ Ошибка при создании лейбла ${label.name}:`, error.message);
+                }
+              }
+            }
+            
+            console.log('\n🎉 Все лейблы созданы/обновлены!');
