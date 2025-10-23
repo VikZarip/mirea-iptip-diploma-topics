@@ -9,7 +9,7 @@ permissions:
 
 jobs:
   reserve:
-    if: contains(github.event.issue.labels.*.name, 'reservation')
+    if: contains(github.event.issue.labels.*.name, 'reservation') || startsWith(github.event.issue.title, '[Заявка]')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

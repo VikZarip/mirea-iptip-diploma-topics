@@ -6,7 +6,7 @@ on:
 
 jobs:
   handle-proposal:
-    if: contains(github.event.issue.labels.*.name, 'topic-proposal')
+    if: contains(github.event.issue.labels.*.name, 'topic-proposal') || startsWith(github.event.issue.title, '[Предложение]')
     runs-on: ubuntu-latest
     permissions:
       issues: write
