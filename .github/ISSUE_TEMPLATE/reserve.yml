@@ -1,0 +1,38 @@
+name: Резервация темы
+description: Заявка студента на резервацию темы
+labels: [reservation]
+title: "[Заявка] ФИО — <slug>"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Заполните форму. После создания заявки тема будет автоматически переведена в статус «Зарезервирована», если свободна.
+  - type: input
+    id: fio
+    attributes:
+      label: ФИО студента
+      placeholder: Иванов Иван
+    validations:
+      required: true
+  - type: input
+    id: slug
+    attributes:
+      label: Слаг темы (имя файла в topics без .md)
+      placeholder: utility-consumption-forecast
+    validations:
+      required: true
+  - type: input
+    id: supervisor
+    attributes:
+      label: Научный руководитель
+      placeholder: Петров П.П.
+    validations:
+      required: true
+  - type: input
+    id: access_code
+    attributes:
+      label: Код доступа
+      description: Получите код у куратора. Заявки без корректного кода автоматически отклоняются.
+      placeholder: XXXXX
+    validations:
+      required: true
