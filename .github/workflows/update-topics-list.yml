@@ -1,0 +1,100 @@
+name: Update Topics Dropdown
+
+on:
+  push:
+    paths:
+      - 'diploma-info/topics/*.md'
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  update-dropdown:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Generate topics list
+        run: |
+          cat > update_dropdown.js << 'SCRIPT'
+          const fs = require('fs');
+          const path = require('path');
+
+          // Читаем все темы
+          const topicsDir = 'diploma-info/topics';
+          const files = fs.readdirSync(topicsDir)
+            .filter(f => f.endsWith('.md') && f !== 'README.md' && f !== 'TEMPLATE.md');
+
+          const availableTopics = [];
+
+          files.forEach(file => {
+            const content = fs.readFileSync(path.join(topicsDir, file), 'utf8');
+            const slug = file.replace('.md', '');
+            
+            // Проверяем статус темы
+            const statusMatch = content.match(/\*\*Статус:\*\*\s*(.+)/i);
+            const status = statusMatch ? statusMatch[1].trim() : '';
+            
+            // Извлекаем название темы (первый заголовок)
+            const titleMatch = content.match(/^#\s+(.+)$/m);
+            const title = titleMatch ? titleMatch[1].trim() : slug;
+            
+            // Добавляем только свободные темы
+            if (status.toLowerCase().includes('свободно')) {
+              availableTopics.push({
+                slug,
+                title,
+                display: `${slug} | ${title}`
+              });
+            }
+          });
+
+          // Сортируем по алфавиту
+          availableTopics.sort((a, b) => a.slug.localeCompare(b.slug));
+
+          // Читаем текущий reserve.yml
+          const reserveFile = '.github/ISSUE_TEMPLATE/reserve.yml';
+          let reserveContent = fs.readFileSync(reserveFile, 'utf8');
+
+          // Формируем новый список options
+          const optionsLines = availableTopics.map(t => `        - ${t.display}`).join('\n');
+          
+          // Заменяем секцию options
+          const optionsRegex = /(- type: dropdown\s+id: slug\s+attributes:\s+label: [^\n]+\s+description: [^\n]+\s+options:\s*\n)([\s\S]*?)(\s+validations:)/;
+          
+          const newContent = reserveContent.replace(
+            optionsRegex,
+            `$1${optionsLines}\n$3`
+          );
+
+          fs.writeFileSync(reserveFile, newContent, 'utf8');
+          
+          console.log(`✅ Обновлено тем: ${availableTopics.length}`);
+          SCRIPT
+
+          node update_dropdown.js
+
+      - name: Check for changes
+        id: check
+        run: |
+          if git diff --quiet .github/ISSUE_TEMPLATE/reserve.yml; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit changes
+        if: steps.check.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .github/ISSUE_TEMPLATE/reserve.yml
+          git commit -m "chore: обновлён список доступных тем в форме резервации"
+          git push
+
+      - name: Summary
+        if: steps.check.outputs.changed == 'true'
+        run: echo "✅ Список тем в dropdown обновлён автоматически"

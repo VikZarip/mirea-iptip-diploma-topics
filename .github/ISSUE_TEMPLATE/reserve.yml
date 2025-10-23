@@ -21,11 +21,28 @@ body:
       placeholder: ИКБО-01-21
     validations:
       required: true
-  - type: input
+  - type: dropdown
     id: slug
     attributes:
-      label: Слаг темы (имя файла в topics без .md)
-      placeholder: utility-consumption-forecast
+      label: Выберите тему
+      description: Список автоматически обновляется и содержит только свободные темы. Проверьте актуальность в каталоге topics/
+      options:
+        - air-pollution-forecast | Прогноз уровня загрязнения воздуха
+        - api-designer-event-model | API-дизайнер на основе событийной модели
+        - chronic-disease-classification | Классификация хронических заболеваний
+        - client-complaints-routing | Маршрутизация жалоб клиентов
+        - conflict-of-interest-detection | Детекция конфликтов интересов
+        - environmental-disaster-warning | Система раннего предупреждения о ЧС
+        - event-storming-interactive | Интерактивный Event Storming
+        - medical-staff-allocation | Распределение медперсонала
+        - multi-apartment-energy-management | Управление энергопотреблением в МКД
+        - pandemic-early-warning | Раннее предупреждение о пандемиях
+        - platform-family-support | Платформа поддержки семей
+        - requirements-deduplication | Дедупликация требований
+        - social-benefits-fraud-detection | Детекция мошенничества с соцвыплатами
+        - social-workers-routing | Маршрутизация социальных работников
+        - urban-air-quality-monitoring | Мониторинг качества воздуха в городе
+        - utility-consumption-forecast | Прогноз потребления коммунальных услуг
     validations:
       required: true
   - type: input

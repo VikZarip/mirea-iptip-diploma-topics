@@ -25,7 +25,9 @@ jobs:
           )
           FIO=$(printf "%s" "$BODY" | awk '/^\s*ФИО студента/{getline; print}' | tr -d '\r')
           GROUP=$(printf "%s" "$BODY" | awk '/^\s*Группа/{getline; print}' | tr -d '\r')
-          SLUG=$(printf "%s" "$BODY" | awk '/^\s*Слаг темы/{getline; print}' | tr -d '\r')
+          # Извлечение slug из dropdown (формат: "slug | название")
+          SLUG_RAW=$(printf "%s" "$BODY" | awk '/^\s*Выберите тему/{getline; print}' | tr -d '\r')
+          SLUG=$(echo "$SLUG_RAW" | cut -d'|' -f1 | xargs)
           SUPERVISOR=$(printf "%s" "$BODY" | awk '/^\s*Научный руководитель/{getline; print}' | tr -d '\r')
           ACCESS=$(printf "%s" "$BODY" | awk '/^\s*Код доступа/{getline; print}' | tr -d '\r')
           echo "fio=$FIO" >> $GITHUB_OUTPUT
