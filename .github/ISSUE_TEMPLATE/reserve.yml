@@ -45,6 +45,7 @@ body:
         - utility-consumption-forecast | Система умного учёта и прогнозирования потребления коммунальных ресурсов
 
 
+
     validations:
       required: true
   - type: input
