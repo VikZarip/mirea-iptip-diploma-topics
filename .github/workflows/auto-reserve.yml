@@ -18,9 +18,11 @@ jobs:
 
       - name: Extract form data
         id: extract
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
         run: |
           cat > parse.js << 'SCRIPT'
-          const body = process.argv[2];
+          const body = process.env.ISSUE_BODY || '';
           
           // Отладочный вывод
           console.error('=== DEBUG: Issue Body ===');
@@ -51,7 +53,7 @@ jobs:
           console.log(`access_code=${access}`);
           SCRIPT
           
-          node parse.js -- "${{ github.event.issue.body }}" >> $GITHUB_OUTPUT
+          node parse.js >> $GITHUB_OUTPUT
 
       - name: Validate inputs
         id: validate
