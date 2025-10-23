@@ -61,3 +61,6 @@ _temp
 
 # Curator internal docs
 .github/CURATOR_GUIDE.md
+
+# Temporary workflow artifacts
+parse.js
