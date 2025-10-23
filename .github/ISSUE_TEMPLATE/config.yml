@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 📚 Гайды по подготовке диплома
+    url: https://github.com/VikZarip/mirea-iptip-diploma-topics/tree/main/diploma-info/guides
+    about: Методология, проектирование, оформление, защита
+  - name: 📖 Каталог доступных тем
+    url: https://github.com/VikZarip/mirea-iptip-diploma-topics/tree/main/diploma-info/topics
+    about: Просмотрите темы со статусом "Свободно"
+  - name: 💬 Связаться с куратором
+    url: https://github.com/VikZarip/mirea-iptip-diploma-topics/discussions
+    about: Задайте вопрос через Discussions

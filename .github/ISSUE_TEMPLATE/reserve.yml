@@ -11,7 +11,14 @@ body:
     id: fio
     attributes:
       label: ФИО студента
-      placeholder: Иванов Иван
+      placeholder: Иванов Иван Иванович
+    validations:
+      required: true
+  - type: input
+    id: group
+    attributes:
+      label: Группа
+      placeholder: ИКБО-01-21
     validations:
       required: true
   - type: input
@@ -25,7 +32,7 @@ body:
     id: supervisor
     attributes:
       label: Научный руководитель
-      placeholder: Петров П.П.
+      value: Зарипова В.М.
     validations:
       required: true
   - type: input

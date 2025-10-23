@@ -77,3 +77,20 @@
 - [OpenStreetMap](https://www.openstreetmap.org/), [Google Maps API](https://developers.google.com/maps/documentation?hl=ru), [Яндекс.Карты API](https://yandex.ru/dev/maps/).
 - [VRP тестовые датасеты](https://web.vu.lt/mif/a.brazinskas/vrp/).
 - [Статистика соцобслуживания регионов](https://www.gks.ru/compendium/document/13282).
+
+---
+
+## Как зарезервировать эту тему
+
+Следуйте инструкции в главном [README.md](../../README.md#-как-зарезервировать-тему):
+1. Получите код доступа у куратора
+2. Создайте Issue с шаблоном "Резервация темы"
+3. Укажите slug этой темы (имя файла без `.md`)
+4. GitHub Actions автоматически обновит статус
+
+---
+
+## Закреплённые студенты
+
+_Этот раздел заполняется автоматически при резервации темы через GitHub Issues._
+

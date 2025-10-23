@@ -19,29 +19,82 @@ jobs:
       - name: Extract form data
         id: extract
         run: |
-          BODY=$(jq -r '.issue.body' "$GITHUB_EVENT_PATH")
-          # Извлечь значения под заголовками полей формы
+          BODY=$(cat <<'EOF'
+          ${{ github.event.issue.body }}
+          EOF
+          )
           FIO=$(printf "%s" "$BODY" | awk '/^\s*ФИО студента/{getline; print}' | tr -d '\r')
+          GROUP=$(printf "%s" "$BODY" | awk '/^\s*Группа/{getline; print}' | tr -d '\r')
           SLUG=$(printf "%s" "$BODY" | awk '/^\s*Слаг темы/{getline; print}' | tr -d '\r')
           SUPERVISOR=$(printf "%s" "$BODY" | awk '/^\s*Научный руководитель/{getline; print}' | tr -d '\r')
           ACCESS=$(printf "%s" "$BODY" | awk '/^\s*Код доступа/{getline; print}' | tr -d '\r')
           echo "fio=$FIO" >> $GITHUB_OUTPUT
+          echo "group=$GROUP" >> $GITHUB_OUTPUT
           echo "slug=$SLUG" >> $GITHUB_OUTPUT
           echo "supervisor=$SUPERVISOR" >> $GITHUB_OUTPUT
           echo "access_code=$ACCESS" >> $GITHUB_OUTPUT
 
       - name: Validate inputs
+        id: validate
+        continue-on-error: true
         run: |
-          test -n "${{ steps.extract.outputs.slug }}" || { echo "Пустой slug"; exit 1; }
-          FILE="diploma-info/topics/${{ steps.extract.outputs.slug }}.md"
-          test -f "$FILE" || { echo "Файл темы не найден: $FILE"; exit 1; }
+          SLUG="${{ steps.extract.outputs.slug }}"
+          if [ -z "$SLUG" ]; then
+            echo "error=empty_slug" >> $GITHUB_OUTPUT
+            exit 1
+          fi
+          
+          FILE="diploma-info/topics/${SLUG}.md"
+          if [ ! -f "$FILE" ]; then
+            echo "error=file_not_found" >> $GITHUB_OUTPUT
+            echo "file=$FILE" >> $GITHUB_OUTPUT
+            exit 1
+          fi
+          
           # Проверка, что тема свободна
           if grep -qiE '^\*\*Статус:\*\*\s*(Зарезервирована|в работе|завершена)' "$FILE"; then
-            echo "Тема уже занята/в работе/завершена"; exit 1;
+            echo "error=topic_taken" >> $GITHUB_OUTPUT
+            exit 1
           fi
+          
+          echo "success=true" >> $GITHUB_OUTPUT
+
+      - name: Handle validation errors
+        if: steps.validate.outputs.error != ''
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const error = '${{ steps.validate.outputs.error }}';
+            let message = '';
+            
+            if (error === 'empty_slug') {
+              message = '❌ **Заявка отклонена:** Не указан slug темы.\n\nПожалуйста, заполните форму корректно и создайте новую заявку.';
+            } else if (error === 'file_not_found') {
+              const file = '${{ steps.validate.outputs.file }}';
+              message = `❌ **Заявка отклонена:** Тема с slug \`${{ steps.extract.outputs.slug }}\` не найдена.\n\nПроверьте правильность slug (имя файла без \`.md\`) в каталоге [topics](https://github.com/${{ github.repository }}/tree/main/diploma-info/topics).`;
+            } else if (error === 'topic_taken') {
+              message = '❌ **Заявка отклонена:** Тема **уже зарезервирована** другим студентом.\n\nПожалуйста, выберите другую тему из [каталога](https://github.com/${{ github.repository }}/tree/main/diploma-info/topics) со статусом "Свободно".';
+            }
+            
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: message
+            });
+            
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              state: 'closed',
+              state_reason: 'not_planned'
+            });
+            
+            core.setFailed(`Validation failed: ${error}`);
 
       - name: Check access code
-        if: always()
+        if: steps.validate.outputs.success == 'true'
         uses: actions/github-script@v7
         env:
           ACCESS_CODE: ${{ steps.extract.outputs.access_code }}
@@ -50,22 +103,38 @@ jobs:
           script: |
             const access = process.env.ACCESS_CODE?.trim();
             const secret = process.env.SECRET_CODE?.trim();
+            
             if (!secret) {
-              core.setFailed('Секрет RESERVE_CODE не задан в репозитории.');
-              return;
-            }
-            if (access !== secret) {
               await github.rest.issues.createComment({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 issue_number: context.issue.number,
-                body: '❌ Неверный код доступа. Обратитесь к куратору за корректным кодом.'
+                body: '❌ **Заявка отклонена:** Секрет `RESERVE_CODE` не настроен в репозитории.\n\nОбратитесь к администратору репозитория.'
               });
               await github.rest.issues.update({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 issue_number: context.issue.number,
-                state: 'closed'
+                state: 'closed',
+                state_reason: 'not_planned'
+              });
+              core.setFailed('Секрет RESERVE_CODE не задан в репозитории.');
+              return;
+            }
+            
+            if (access !== secret) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: '❌ **Заявка отклонена:** Неверный код доступа.\n\nОбратитесь к куратору за корректным кодом доступа для резервации темы.'
+              });
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                state: 'closed',
+                state_reason: 'not_planned'
               });
               core.setFailed('Неверный код доступа. Заявка закрыта.');
             }
@@ -79,6 +148,7 @@ jobs:
         env:
           FILE_PATH: diploma-info/topics/${{ steps.extract.outputs.slug }}.md
           FIO: ${{ steps.extract.outputs.fio }}
+          GROUP: ${{ steps.extract.outputs.group }}
           SUPERVISOR: ${{ steps.extract.outputs.supervisor }}
         run: |
           node - <<'NODE'
@@ -96,10 +166,12 @@ jobs:
 
           const today = new Date().toISOString().slice(0,10);
           const fio = (process.env.FIO || 'Студент').trim();
-          const sup = (process.env.SUPERVISOR || '-').trim();
+          const group = (process.env.GROUP || '').trim();
+          const sup = (process.env.SUPERVISOR || 'Зарипова В.М.').trim();
 
-          // 3) Добавить запись в конец блока
-          s = s.replace(/(##\s*Закреплённые студенты[\s\S]*?)$/i, `$1- ${fio} — ${today} — ${sup}\n\n`);
+          // 3) Добавить запись: ФИО (Группа) — дата — научный руководитель
+          const entry = group ? `- **${fio}** (${group}) — ${today} — ${sup}\n` : `- **${fio}** — ${today} — ${sup}\n`;
+          s = s.replace(/(##\s*Закреплённые студенты[\s\S]*?)$/i, `$1${entry}\n`);
 
           fs.writeFileSync(path, s, 'utf8');
           NODE
@@ -111,3 +183,30 @@ jobs:
           git add -A
           git commit -m "Auto-reserve: ${{ steps.extract.outputs.slug }} via issue #${{ github.event.issue.number }}" || echo "Nothing to commit"
           git push
+
+      - name: Notify success
+        if: success()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const slug = '${{ steps.extract.outputs.slug }}';
+            const fio = '${{ steps.extract.outputs.fio }}';
+            const group = '${{ steps.extract.outputs.group }}';
+            const supervisor = '${{ steps.extract.outputs.supervisor }}';
+            
+            const studentInfo = group ? `${fio} (${group})` : fio;
+            
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `✅ **Тема успешно зарезервирована!**\n\n**Студент:** ${studentInfo}\n**Научный руководитель:** ${supervisor}\n**Тема:** [\`${slug}\`](https://github.com/${{ github.repository }}/blob/main/diploma-info/topics/${slug}.md)\n\n---\n\n### Следующие шаги:\n\n1. Изучите [гайды по подготовке диплома](https://github.com/${{ github.repository }}/tree/main/diploma-info/guides)\n2. Ознакомьтесь с [рекомендуемым порядком работы](https://github.com/${{ github.repository }}/blob/main/diploma-info/guides/README.md#рекомендуемый-порядок-изучения)\n3. Настройте локальную среду разработки\n4. Свяжитесь с научным руководителем для уточнения деталей\n\nУдачи в работе над дипломом! 🎓`
+            });
+            
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              state: 'closed',
+              state_reason: 'completed'
+            });

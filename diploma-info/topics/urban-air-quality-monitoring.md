@@ -66,3 +66,20 @@
 - [NASA Earthdata — Air Quality](https://earthdata.nasa.gov/learn/toolkits/air-quality-toolkit).
 - [data.mos.ru: Экология и мониторинг атмосферы](https://data.mos.ru/).
 - [NOAA Climate Data](https://www.ncdc.noaa.gov/cdo-web/).
+
+---
+
+## Как зарезервировать эту тему
+
+Следуйте инструкции в главном [README.md](../../README.md#-как-зарезервировать-тему):
+1. Получите код доступа у куратора
+2. Создайте Issue с шаблоном "Резервация темы"
+3. Укажите slug этой темы (имя файла без `.md`)
+4. GitHub Actions автоматически обновит статус
+
+---
+
+## Закреплённые студенты
+
+_Этот раздел заполняется автоматически при резервации темы через GitHub Issues._
+
