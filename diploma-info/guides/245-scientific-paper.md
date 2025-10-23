@@ -427,7 +427,7 @@ I. Goodfellow, Y. Bengio, and A. Courville, Deep Learning. Cambridge, MA: MIT Pr
 
 ## Сроки: когда начинать
 
-### Рекомендуемый timeline
+### Рекомендуемый график
 
 **4-5 месяцев до защиты:**
 - Выберите конференцию/журнал
