@@ -58,6 +58,7 @@ logs/
 *.private
 secrets*/
 _temp
+_admin_notes/
 
 # Curator internal docs
 .github/CURATOR_GUIDE.md

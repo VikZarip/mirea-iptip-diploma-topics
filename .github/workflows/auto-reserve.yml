@@ -17,6 +17,39 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Check if reservations are open
+        id: check_open
+        uses: actions/github-script@v7
+        env:
+          RESERVATIONS_OPEN: ${{ secrets.RESERVATIONS_OPEN }}
+        with:
+          script: |
+            const isOpen = process.env.RESERVATIONS_OPEN?.trim().toLowerCase();
+            
+            // Если переменная не установлена, считаем что прием открыт (обратная совместимость)
+            if (!isOpen || isOpen === 'true' || isOpen === '1' || isOpen === 'yes') {
+              console.log('Прием заявок открыт');
+              return;
+            }
+            
+            // Прием заявок закрыт
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: '❌ **Прошу прощения, прием заявок на темы окончен.**\n\nВ настоящее время резервация новых тем недоступна. Следите за объявлениями о возобновлении приема заявок.\n\nЕсли у вас есть вопросы, обратитесь к куратору репозитория.'
+            });
+            
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              state: 'closed',
+              state_reason: 'not_planned'
+            });
+            
+            core.setFailed('Прием заявок на темы закрыт.');
+
       - name: Extract form data
         id: extract
         env:
