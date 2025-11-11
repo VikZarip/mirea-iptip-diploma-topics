@@ -1,0 +1,61 @@
+name: Generate Reserved Topics Page
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'diploma-info/topics/*.md'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Make script executable
+        run: chmod +x .github/scripts/generate-reserved-topics.js
+
+      - name: Generate reserved topics page
+        run: node .github/scripts/generate-reserved-topics.js
+
+      - name: Check for changes
+        id: check_changes
+        run: |
+          if git diff --quiet diploma-info/RESERVED_TOPICS.md; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "ℹ️  Нет изменений в списке зарезервированных тем"
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "✅ Обнаружены изменения в списке зарезервированных тем"
+          fi
+
+      - name: Commit and push changes
+        if: steps.check_changes.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add diploma-info/RESERVED_TOPICS.md
+          git commit -m "docs: обновление списка зарезервированных тем [skip ci]"
+          git push
+
+      - name: Summary
+        if: steps.check_changes.outputs.changed == 'true'
+        run: |
+          echo "### ✅ Страница зарезервированных тем обновлена" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Файл: \`diploma-info/RESERVED_TOPICS.md\`" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Просмотреть: [RESERVED_TOPICS.md](https://github.com/${{ github.repository }}/blob/main/diploma-info/RESERVED_TOPICS.md)" >> $GITHUB_STEP_SUMMARY

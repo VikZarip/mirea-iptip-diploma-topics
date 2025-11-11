@@ -231,6 +231,11 @@ jobs:
           fs.writeFileSync(path, s, 'utf8');
           NODE
 
+      - name: Generate reserved topics page
+        run: |
+          chmod +x .github/scripts/generate-reserved-topics.js
+          node .github/scripts/generate-reserved-topics.js
+
       - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"
