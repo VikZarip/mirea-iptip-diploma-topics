@@ -65,3 +65,6 @@ _admin_notes/
 
 # Temporary workflow artifacts
 parse.js
+
+# Личный output style Claude Code
+.claude/output-styles/Док.md
