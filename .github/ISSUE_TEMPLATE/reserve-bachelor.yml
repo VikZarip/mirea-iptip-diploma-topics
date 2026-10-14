@@ -46,6 +46,7 @@ body:
         - tech-debt-tracker | Разработка веб-приложения для учёта и визуализации технического долга программного проекта с интеграцией с Git
 
 
+
     validations:
       required: true
   - type: input
