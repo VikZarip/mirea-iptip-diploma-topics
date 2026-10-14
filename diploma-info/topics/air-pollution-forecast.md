@@ -48,6 +48,14 @@
 - Временные ряды (Prophet, LSTM), регрессия, корреляционный анализ.
 - Данные: OpenAQ, World Air Quality Index, Google Traffic.
 
+## Ключевые публикации
+
+- Zaini N. et al. *A systematic literature review of deep learning neural network for time series air quality forecasting*. Environmental Science and Pollution Research, 2022. [doi:10.1007/s11356-021-17442-1](https://doi.org/10.1007/s11356-021-17442-1) — обзор нейросетевых моделей (LSTM, CNN, гибриды) для прогноза качества воздуха по временным рядам; помогает выбрать базовые модели.
+- Liang X. et al. *Assessing Beijing's PM2.5 pollution: severity, weather impact, APEC and winter heating*. Proceedings of the Royal Society A, 2015. [doi:10.1098/rspa.2015.0257](https://doi.org/10.1098/rspa.2015.0257) — статистическая оценка влияния метеоусловий на PM2.5; на этих данных построен датасет UCI Beijing PM2.5.
+- Zheng Y. et al. *Forecasting Fine-Grained Air Quality Based on Big Data*. Proc. 21st ACM SIGKDD (KDD), 2015. [doi:10.1145/2783258.2788573](https://doi.org/10.1145/2783258.2788573) — опорная работа: прогноз на 48 часов по станциям с учётом метеоданных и прогноза погоды.
+- Wang S. et al. *PM2.5-GNN: A Domain Knowledge Enhanced Graph Neural Network For PM2.5 Forecasting*. ACM SIGSPATIAL 2020 (poster). [arXiv:2002.12898](https://arxiv.org/abs/2002.12898) — графовая нейросеть, которая учитывает ветер и перенос загрязнения между городами; код открыт.
+- Liang Y. et al. *AirFormer: Predicting Nationwide Air Quality in China with Transformers*. AAAI 2023. [arXiv:2211.15979](https://arxiv.org/abs/2211.15979) — современный трансформерный подход к пространственно-временному прогнозу качества воздуха.
+
 ## Практическая польза
 
 - Поддержка решений городских властей и информирование населения.

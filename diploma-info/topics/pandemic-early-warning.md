@@ -57,6 +57,14 @@
 - Статистический анализ корреляций между мобильностью, погодой, аптечными продажами и заболеваемостью.
 - A/B-тестирование и причинно-следственный анализ эффективности интервенций.
 
+## Ключевые публикации
+
+- Kermack W. O., McKendrick A. G. *A contribution to the mathematical theory of epidemics*. Proceedings of the Royal Society A, 1927. [doi:10.1098/rspa.1927.0118](https://doi.org/10.1098/rspa.1927.0118) — основополагающая работа о компартментных моделях SIR, база для моделирования SIR/SEIR.
+- Ginsberg J. et al. *Detecting influenza epidemics using search engine query data*. Nature, 2009. [doi:10.1038/nature07634](https://doi.org/10.1038/nature07634) — первая известная работа о раннем обнаружении эпидемий по нестандартным цифровым данным (Google Flu Trends).
+- Lazer D. et al. *The Parable of Google Flu: Traps in Big Data Analysis*. Science, 2014. [doi:10.1126/science.1248506](https://doi.org/10.1126/science.1248506) — почему Google Flu Trends со временем ошибся: риски прогнозов на «больших данных», которые нужно учесть в системе.
+- Kraemer M. U. G. et al. *The effect of human mobility and control measures on the COVID-19 epidemic in China*. Science, 2020. [doi:10.1126/science.abb4218](https://doi.org/10.1126/science.abb4218) — количественная связь данных мобильности, ограничительных мер и распространения инфекции.
+- Cramer E. Y. et al. *Evaluation of individual and ensemble probabilistic forecasts of COVID-19 mortality in the United States*. PNAS, 2022. [doi:10.1073/pnas.2113561119](https://doi.org/10.1073/pnas.2113561119) — сравнение моделей US COVID-19 Forecast Hub; как оценивать точность прогнозов на горизонте 1–4 недели и что дают ансамбли.
+
 ## Практическая польза
 
 - Снижение пиков нагрузки на систему здравоохранения за счёт раннего реагирования.

@@ -58,6 +58,14 @@
 - Стохастическое моделирование, ML для оценки длительности визитов и прогноз потоков.
 - Реальные и синтетические наборы адресов, временные окна, статистика обращений.
 
+## Ключевые публикации
+
+- Fikar C., Hirsch P. *Home health care routing and scheduling: A review*. Computers & Operations Research, 2017. [doi:10.1016/j.cor.2016.07.019](https://doi.org/10.1016/j.cor.2016.07.019) — базовый обзор задачи маршрутизации и расписания визитов на дом (HHCRSP).
+- Di Mascolo M., Martinez C., Espinouse M.-L. *Routing and scheduling in Home Health Care: A literature survey and bibliometric analysis*. Computers & Industrial Engineering, 2021. [doi:10.1016/j.cie.2021.107255](https://doi.org/10.1016/j.cie.2021.107255) — свежий обзор ограничений, целей, динамических и стохастических постановок.
+- Solomon M. M. *Algorithms for the Vehicle Routing and Scheduling Problems with Time Window Constraints*. Operations Research, 1987. [doi:10.1287/opre.35.2.254](https://doi.org/10.1287/opre.35.2.254) — эвристики для VRPTW и источник стандартных тестовых наборов Solomon.
+- Vidal T. *Hybrid genetic search for the CVRP: Open-source implementation and SWAP\* neighborhood*. Computers & Operations Research, 2022. [doi:10.1016/j.cor.2021.105643](https://doi.org/10.1016/j.cor.2021.105643) — открытая реализация одного из сильнейших генетических алгоритмов для VRP.
+- Малофеев И. В. *Оптимизация системы надомного обслуживания населения: новая модель*. Журнал СФУ. Гуманитарные науки, 2011. [КиберЛенинка](https://cyberleninka.ru/article/n/optimization-of-the-public-home-care-system-a-new-model) — российский опыт: хронометраж труда соцработников и логистика надомного обслуживания (модели маршрутизации в статье нет).
+
 ## Практическая польза
 
 - Повышение доступности социальных услуг и сокращение времени ожидания.

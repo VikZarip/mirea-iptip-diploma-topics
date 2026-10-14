@@ -64,6 +64,14 @@
 - Анализ расписаний, потоков пациентов, квалификаций
 - Исторические данные МИС, данные ЭМК, открытые симулированные датасеты
 
+## Ключевые публикации
+
+- Burke E. K. et al. *The State of the Art of Nurse Rostering*. Journal of Scheduling, 2004. [doi:10.1023/B:JOSH.0000046076.75950.0b](https://doi.org/10.1023/B:JOSH.0000046076.75950.0b) — классический обзор постановок и методов составления графиков медицинского персонала.
+- Van den Bergh J. et al. *Personnel scheduling: A literature review*. European Journal of Operational Research, 2013. [doi:10.1016/j.ejor.2012.11.029](https://doi.org/10.1016/j.ejor.2012.11.029) — классификация задач планирования персонала по ограничениям, целевым функциям и методам решения.
+- Ceschia S. et al. *The Second International Nurse Rostering Competition*. Annals of Operations Research, 2019. [doi:10.1007/s10479-018-2816-0](https://doi.org/10.1007/s10479-018-2816-0) — бенчмарк INRC-II с понедельным планированием; на нём удобно проверять свои алгоритмы.
+- Ngoo C. M. et al. *A Survey of the Nurse Rostering Solution Methodologies: The State-of-the-Art and Emerging Trends*. IEEE Access, 2022. [doi:10.1109/ACCESS.2022.3177280](https://doi.org/10.1109/ACCESS.2022.3177280) — свежий обзор за 2012–2021 гг.: метаэвристики, матэвристики, гибриды и бенчмарки.
+- Green L. V. *Queueing Analysis in Healthcare*. In: Patient Flow, Springer, 2006. [doi:10.1007/978-0-387-33636-7_10](https://doi.org/10.1007/978-0-387-33636-7_10) — модели массового обслуживания для расчёта потребности в персонале по потоку пациентов.
+
 ## Практическая польза
 
 - Повышение качества медицинского обслуживания

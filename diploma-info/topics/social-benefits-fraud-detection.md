@@ -65,6 +65,14 @@
 - Работа с несбалансированными выборками
 - Публичные и ведомственные данные
 
+## Ключевые публикации
+
+- Van Vlasselaer V. et al. *GOTCHA! Network-Based Fraud Detection for Social Security Fraud*. Management Science, 2017. [doi:10.1287/mnsc.2016.2489](https://doi.org/10.1287/mnsc.2016.2489) — прямой аналог темы: сетевые признаки и распространение риска по графу связей для выявления мошенничества в соцобеспечении.
+- Hilal W. et al. *Financial Fraud: A Review of Anomaly Detection Techniques and Recent Advances*. Expert Systems with Applications, 2022. [doi:10.1016/j.eswa.2021.116429](https://doi.org/10.1016/j.eswa.2021.116429) — свежий обзор методов антифрода и обнаружения аномалий.
+- Chawla N. V. et al. *SMOTE: Synthetic Minority Over-sampling Technique*. Journal of Artificial Intelligence Research, 2002. [doi:10.1613/jair.953](https://doi.org/10.1613/jair.953) — базовый метод работы с несбалансированными выборками.
+- Liu F. T. et al. *Isolation Forest*. IEEE ICDM, 2008. [doi:10.1109/ICDM.2008.17](https://doi.org/10.1109/ICDM.2008.17) — первоисточник метода обнаружения аномалий без учителя, указанного в теме.
+- Lundberg S. M., Lee S.-I. *A Unified Approach to Interpreting Model Predictions*. NeurIPS, 2017. [arXiv:1705.07874](https://arxiv.org/abs/1705.07874) — метод SHAP: объяснение решений модели проверяющим сотрудникам.
+
 ## Практическая польза
 
 - Сокращение ущерба от мошенничества в социальной сфере

@@ -56,6 +56,14 @@
 - Пространственная интерполяция (kriging, IDW), сценарное моделирование, анализ корреляций с погодой и мобильностью.
 - Использование real event logs, открытых сенсорных данных и симулированных сценариев.
 
+## Ключевые публикации
+
+- Esposito M. et al. *Recent Advances in Internet of Things Solutions for Early Warning Systems: A Review*. Sensors, 2022. [doi:10.3390/s22062124](https://doi.org/10.3390/s22062124) — обзор IoT-архитектур систем раннего предупреждения о природных и техногенных угрозах.
+- Ullo S. L., Sinha G. R. *Advances in Smart Environment Monitoring Systems Using IoT and Sensors*. Sensors, 2020. [doi:10.3390/s20113113](https://doi.org/10.3390/s20113113) — обзор сенсорных IoT-систем мониторинга воздуха, воды и радиации.
+- Chandola V. et al. *Anomaly detection: A survey*. ACM Computing Surveys, 2009. [doi:10.1145/1541880.1541882](https://doi.org/10.1145/1541880.1541882) — классический обзор методов детекции аномалий, теоретическая основа детекторов.
+- Page E. S. *Continuous Inspection Schemes*. Biometrika, 1954. [doi:10.1093/biomet/41.1-2.100](https://doi.org/10.1093/biomet/41.1-2.100) — исходная работа о методе CUSUM для обнаружения сдвигов в потоке измерений.
+- Jain P. et al. *A review of machine learning applications in wildfire science and management*. Environmental Reviews, 2020. [doi:10.1139/er-2020-0019](https://doi.org/10.1139/er-2020-0019) — обзор ML для прогноза и обнаружения пожаров, одного из ключевых сценариев ЧС.
+
 ## Практическая польза
 
 - Предотвращение тяжёлых последствий экологических катастроф.

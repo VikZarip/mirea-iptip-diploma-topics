@@ -47,6 +47,14 @@
 - Feature engineering с учётом погодных, транспортных и сезонных факторов.
 - Данные стационарных и мобильных станций, краудсорсинговые сенсоры, спутниковые наблюдения.
 
+## Ключевые публикации
+
+- Morawska L. et al. *Applications of low-cost sensing technologies for air quality monitoring and exposure assessment: How far have they gone?* Environment International, 2018. [doi:10.1016/j.envint.2018.04.018](https://doi.org/10.1016/j.envint.2018.04.018) — обзор возможностей и ограничений сетей недорогих датчиков для городского мониторинга.
+- Castell N. et al. *Can commercial low-cost sensor platforms contribute to air quality monitoring and exposure estimates?* Environment International, 2017. [doi:10.1016/j.envint.2016.12.007](https://doi.org/10.1016/j.envint.2016.12.007) — полевое сравнение недорогих датчиков с эталонными станциями; показывает, зачем нужна калибровка.
+- Concas F. et al. *Low-Cost Outdoor Air Quality Monitoring and Sensor Calibration: A Survey and Critical Analysis*. ACM Transactions on Sensor Networks, 2021. [doi:10.1145/3446005](https://doi.org/10.1145/3446005) — обзор методов калибровки датчиков (регрессия, ML, калибровка на месте установки), основа модуля нормализации.
+- Barkjohn K. K. et al. *Development and application of a United States-wide correction for PM2.5 data collected with the PurpleAir sensor*. Atmospheric Measurement Techniques, 2021. [doi:10.5194/amt-14-4617-2021](https://doi.org/10.5194/amt-14-4617-2021) — практическая модель коррекции показаний массовых датчиков с учётом влажности, готовый образец калибровки.
+- Zheng Y. et al. *U-Air: When Urban Air Quality Inference Meets Big Data*. Proc. 19th ACM SIGKDD (KDD), 2013. [doi:10.1145/2487575.2488188](https://doi.org/10.1145/2487575.2488188) — оценка качества воздуха в районах без станций по разнородным городским данным (трафик, мобильность, POI, метео).
+
 ## Практическая польза
 
 - Поддержка решений городских служб по оперативному реагированию на ухудшение качества воздуха.

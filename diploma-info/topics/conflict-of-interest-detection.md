@@ -62,6 +62,13 @@
 - NLP для анализа документации и новостных источников
 - Реестры ЕГРЮЛ, ФНС, декларации, открытые данные СМИ
 
+## Ключевые публикации
+
+- Akoglu L. et al. *Graph based anomaly detection and description: a survey*. Data Mining and Knowledge Discovery, 2015. [doi:10.1007/s10618-014-0365-y](https://doi.org/10.1007/s10618-014-0365-y) — основополагающий обзор методов поиска аномалий в графах.
+- Ma X. et al. *A Comprehensive Survey on Graph Anomaly Detection with Deep Learning*. IEEE TKDE, 2021. [doi:10.1109/TKDE.2021.3118815](https://doi.org/10.1109/TKDE.2021.3118815) — обзор GNN-подходов к поиску аномальных узлов, связей и подграфов.
+- Fazekas M., Kocsis G. *Uncovering High-Level Corruption: Cross-National Objective Corruption Risk Indicators Using Public Procurement Data*. British Journal of Political Science, 2020. [doi:10.1017/S0007123417000461](https://doi.org/10.1017/S0007123417000461) — объективные индикаторы коррупционного риска по данным госзакупок; переносятся на zakupki.gov.ru.
+- Wachs J. et al. *Corruption risk in contracting markets: a network science perspective*. International Journal of Data Science and Analytics, 2021. [doi:10.1007/s41060-019-00204-1](https://doi.org/10.1007/s41060-019-00204-1) — сетевой анализ связей «заказчик — поставщик» для выявления рискованных кластеров.
+
 ## Практическая польза
 
 - Сокращение риска управленческих ошибок и коррупции

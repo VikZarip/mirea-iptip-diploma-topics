@@ -57,6 +57,14 @@
 - Sentence-BERT, тематическая кластеризация, MMR.
 - Данные: открытые тикеты (Jira Apache, Mozilla bug datasets).
 
+## Ключевые публикации
+
+- Zhao L. et al. *Natural Language Processing for Requirements Engineering: A Systematic Mapping Study*. ACM Computing Surveys, 2021. [doi:10.1145/3444689](https://doi.org/10.1145/3444689) — систематический обзор NLP-методов в инженерии требований.
+- Falessi D. et al. *Empirical Principles and an Industrial Case Study in Retrieving Equivalent Requirements via Natural Language Processing Techniques*. IEEE Transactions on Software Engineering, 2013. [doi:10.1109/TSE.2011.122](https://doi.org/10.1109/TSE.2011.122) — ключевая работа именно о поиске эквивалентных требований: сравнение мер сходства и методика оценки.
+- Reimers N., Gurevych I. *Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks*. EMNLP-IJCNLP, 2019. [doi:10.18653/v1/D19-1410](https://doi.org/10.18653/v1/D19-1410) — основной метод эмбеддингов предложений для поиска семантических дублей.
+- Carbonell J., Goldstein J. *The use of MMR, diversity-based reranking for reordering documents and producing summaries*. SIGIR, 1998. [doi:10.1145/290941.291025](https://doi.org/10.1145/290941.291025) — первоисточник алгоритма MMR, упомянутого в теме.
+- Zhang T. et al. *Duplicate Bug Report Detection: How Far Are We?* ACM TOSEM, 2023. [doi:10.1145/3576042](https://doi.org/10.1145/3576042) — современный бенчмарк методов поиска дублей на данных Jira, Bugzilla и GitHub.
+
 ## Практическая польза
 
 - Сокращает время ревью и повышает консистентность требований.

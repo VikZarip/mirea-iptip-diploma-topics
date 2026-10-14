@@ -51,6 +51,13 @@
 - BERT/RoBERTa, Naive Bayes, SVM.
 - Данные: открытые наборы (Kaggle Ticket Classification).
 
+## Ключевые публикации
+
+- Minaee S. et al. *Deep Learning–based Text Classification: A Comprehensive Review*. ACM Computing Surveys, 2021. [doi:10.1145/3439726](https://doi.org/10.1145/3439726) — обзор более 150 нейросетевых моделей классификации текста и более 40 датасетов; по нему удобно выбирать базовые модели и метрики.
+- Devlin J. et al. *BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding*. NAACL-HLT, 2019. [doi:10.18653/v1/N19-1423](https://doi.org/10.18653/v1/N19-1423) — базовая контекстная модель; её дообучение проверяет гипотезу темы о коротких текстах.
+- Molino P. et al. *COTA: Improving the Speed and Accuracy of Customer Support through Ranking and Deep Networks*. KDD, 2018. [doi:10.1145/3219819.3219851](https://doi.org/10.1145/3219819.3219851) — промышленная система классификации тикетов Uber с A/B-тестом: время решения обращений сократилось на 10%.
+- Revina A. et al. *IT Ticket Classification: The Simpler, the Better*. IEEE Access, 2020. [doi:10.1109/ACCESS.2020.3032840](https://doi.org/10.1109/ACCESS.2020.3032840) — сравнение TF-IDF и лингвистических признаков на классических классификаторах; сильный простой baseline для тикетов.
+
 ## Практическая польза
 
 - Снижение нагрузки на службу поддержки, ускорение реакции на обращения.

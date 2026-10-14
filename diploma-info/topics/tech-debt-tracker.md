@@ -55,6 +55,12 @@
 - Модели приоритизации: матрица «влияние × трудозатраты», взвешенная оценка.
 - Данные: открытые репозитории на GitHub.
 
+## Ключевые публикации
+
+- Cunningham W. *The WyCash Portfolio Management System*. OOPSLA '92 Experience Report, ACM, 1992. [doi:10.1145/157709.157715](https://doi.org/10.1145/157709.157715) — первоисточник метафоры «технический долг».
+- Kruchten P., Nord R. L., Ozkaya I. *Technical Debt: From Metaphor to Theory and Practice*. IEEE Software, 2012. [doi:10.1109/MS.2012.167](https://doi.org/10.1109/MS.2012.167) — как превратить метафору в управляемое понятие; классификация видов долга, основа модели элемента долга.
+- Tornhill A. *Your Code as a Crime Scene, Second Edition*. Pragmatic Bookshelf, 2024. [pragprog.com](https://pragprog.com/titles/atcrime2/your-code-as-a-crime-scene-second-edition/) — поиск «горячих точек» по истории Git (частота изменений × сложность); прямая основа модуля приоритизации рефакторинга.
+
 ## Практическая польза
 
 - Технический долг становится видимым и планируемым; команда тратит время на рефакторинг там, где это действительно окупается.

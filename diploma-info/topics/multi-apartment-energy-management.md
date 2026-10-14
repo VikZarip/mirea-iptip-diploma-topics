@@ -63,6 +63,14 @@
 - Обработка временных рядов, предиктивное моделирование
 - Симуляторы IoT-устройств, открытые выборки энергосбытовых компаний, погодные данные
 
+## Ключевые публикации
+
+- Vázquez-Canteli J. R., Nagy Z. *Reinforcement learning for demand response: A review of algorithms and modeling techniques*. Applied Energy, 2019. [doi:10.1016/j.apenergy.2018.11.002](https://doi.org/10.1016/j.apenergy.2018.11.002) — обзор обучения с подкреплением для управления спросом (demand response) в зданиях.
+- Wang Z., Hong T. *Reinforcement learning for building controls: The opportunities and challenges*. Applied Energy, 2020. [doi:10.1016/j.apenergy.2020.115036](https://doi.org/10.1016/j.apenergy.2020.115036) — обзор RL для управления инженерными системами здания и барьеров внедрения.
+- Nweye K. et al. *CityLearn v2: energy-flexible, resilient, occupant-centric, and carbon-aware management of grid-interactive communities*. Journal of Building Performance Simulation, 2024. [doi:10.1080/19401493.2024.2418813](https://doi.org/10.1080/19401493.2024.2418813) — открытая среда-бенчмарк для управления энергопотреблением группы зданий.
+- Kelly J., Knottenbelt W. *The UK-DALE dataset, domestic appliance-level electricity demand and whole-house demand from five UK homes*. Scientific Data, 2015. [doi:10.1038/sdata.2015.7](https://doi.org/10.1038/sdata.2015.7) — открытый датасет поквартирного и поприборного потребления.
+- Himeur Y. et al. *Artificial intelligence based anomaly detection of energy consumption in buildings: A review, current trends and new perspectives*. Applied Energy, 2021. [doi:10.1016/j.apenergy.2021.116601](https://doi.org/10.1016/j.apenergy.2021.116601) — обзор методов выявления аномалий энергопотребления.
+
 ## Практическая польза
 
 - Снижение затрат на обслуживание, уменьшение выбросов

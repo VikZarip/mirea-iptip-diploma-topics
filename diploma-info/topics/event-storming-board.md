@@ -55,6 +55,11 @@ Event Storming — метод совместного моделирования 
 - Формализация нотации Event Storming как набора типов элементов и правил связей.
 - Данные: учебные кейсы и примеры сессий из литературы.
 
+## Ключевые публикации
+
+- Brandolini A. *Introducing EventStorming: An act of Deliberate Collective Learning*. Leanpub (книга в процессе написания). [leanpub.com](https://leanpub.com/introducing_eventstorming) — книга автора метода: нотация (цвета и типы стикеров), форматы Big Picture и Process Modelling; по ней формализуются типы элементов доски и правила связей.
+- Evans E. *Domain-Driven Design: Tackling Complexity in the Heart of Software*. Addison-Wesley, 2003. Рус. пер.: Эванс Э. *Предметно-ориентированное проектирование (DDD)*. Вильямс, ISBN 978-5-8459-1597-9. [dialektika.com](https://www.dialektika.com/books/978-5-8459-1597-9.html) — понятия агрегата, ограниченного контекста и единого языка, в которые экспортируется модель Event Storming.
+
 ## Практическая польза
 
 - Распределённые команды проводят Event Storming в инструменте, понимающем нотацию, и сразу получают артефакты для проектирования.

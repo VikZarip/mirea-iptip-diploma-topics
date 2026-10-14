@@ -60,6 +60,14 @@
 - Классификация семей по типам потребностей и сценариям поддержки.
 - Использование синтетических и обезличенных профилей, агрегированных данных органов соцзащиты.
 
+## Ключевые публикации
+
+- Lu J. et al. *Recommender system application developments: A survey*. Decision Support Systems, 2015. [doi:10.1016/j.dss.2015.03.008](https://doi.org/10.1016/j.dss.2015.03.008) — обзор прикладных рекомендательных систем, в том числе для электронного правительства.
+- Burke R. *Hybrid Recommender Systems: Survey and Experiments*. User Modeling and User-Adapted Interaction, 2002. [doi:10.1023/A:1021240730564](https://doi.org/10.1023/A:1021240730564) — классификация гибридных (коллаборативных и контентных) подходов.
+- Kula M. *Metadata Embeddings for User and Item Cold-start Recommendations*. arXiv preprint, 2015. [arXiv:1507.08439](https://arxiv.org/abs/1507.08439) — модель LightFM (указана в теме) для холодного старта по признакам профиля.
+- Harper F. M., Konstan J. A. *The MovieLens Datasets: History and Context*. ACM TiiS, 2015. [doi:10.1145/2827872](https://doi.org/10.1145/2827872) — описание датасета MovieLens для отладки алгоритмов.
+- Lin R. *Recommender System for Government Service in Smart Cities*. IEEE/WIC/ACM WI-IAT, 2022. [doi:10.1109/WI-IAT55865.2022.00126](https://doi.org/10.1109/WI-IAT55865.2022.00126) — обзор рекомендательных систем для госуслуг; показывает, что персонализации в этой сфере пока мало.
+
 ## Практическая польза
 
 - Повышение адресности и эффективности мер социальной поддержки.

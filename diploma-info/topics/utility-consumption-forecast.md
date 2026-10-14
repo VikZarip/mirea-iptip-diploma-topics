@@ -58,6 +58,14 @@
 - Feature engineering с учётом погодных, событийных и поведенческих факторов.
 - Использование открытых и симулированных телеметрических наборов.
 
+## Ключевые публикации
+
+- Hong T., Fan S. *Probabilistic electric load forecasting: A tutorial review*. International Journal of Forecasting, 2016. [doi:10.1016/j.ijforecast.2015.11.011](https://doi.org/10.1016/j.ijforecast.2015.11.011) — обзор методов прогноза нагрузки и метрик качества.
+- Kong W. et al. *Short-Term Residential Load Forecasting Based on LSTM Recurrent Neural Network*. IEEE Transactions on Smart Grid, 2019. [doi:10.1109/TSG.2017.2753802](https://doi.org/10.1109/TSG.2017.2753802) — эталонная работа по LSTM-прогнозу потребления отдельных домохозяйств.
+- Donkor E. A. et al. *Urban Water Demand Forecasting: Review of Methods and Models*. Journal of Water Resources Planning and Management, 2014. [doi:10.1061/(ASCE)WR.1943-5452.0000314](https://doi.org/10.1061/(ASCE)WR.1943-5452.0000314) — обзор методов прогноза водопотребления.
+- Miller C. et al. *The Building Data Genome Project 2, energy meter data from the ASHRAE Great Energy Predictor III competition*. Scientific Data, 2020. [doi:10.1038/s41597-020-00712-x](https://doi.org/10.1038/s41597-020-00712-x) — открытый датасет: около 3 тыс. счётчиков электричества, тепла, воды и газа с погодными данными.
+- Zhou H. et al. *Informer: Beyond Efficient Transformer for Long Sequence Time-Series Forecasting*. AAAI, 2021. [doi:10.1609/aaai.v35i12.17325](https://doi.org/10.1609/aaai.v35i12.17325) — трансформер для длинных временных рядов; современный кандидат против LSTM.
+
 ## Практическая польза
 
 - Экономия расходов и повышение энергоэффективности домов.

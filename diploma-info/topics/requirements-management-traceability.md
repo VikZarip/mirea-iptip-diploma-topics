@@ -54,6 +54,12 @@
 - Метрики текстового сходства: косинусное сходство TF-IDF, эмбеддинги предложений (например, модели семейства SBERT для русского языка).
 - Данные: открытые наборы требований (PROMISE NFR, PURE), учебные ТЗ.
 
+## Ключевые публикации
+
+- Gotel O. C. Z., Finkelstein A. C. W. *An Analysis of the Requirements Traceability Problem*. Proc. IEEE International Conference on Requirements Engineering (ICRE), 1994. [doi:10.1109/ICRE.1994.292398](https://doi.org/10.1109/ICRE.1994.292398) — классическое определение трассируемости требований; основа для матрицы «требование → задача → тест».
+- ISO/IEC/IEEE 29148:2018. *Systems and software engineering — Life cycle processes — Requirements engineering*. [iso.org](https://www.iso.org/standard/72089.html) — международный стандарт инженерии требований: характеристики качественного требования (однозначность, непротиворечивость), состав документов требований.
+- Wiegers K., Beatty J. *Software Requirements*, 3rd ed. Microsoft Press, 2013. Рус. пер.: Вигерс К., Битти Дж. *Разработка требований к программному обеспечению*. 3-е изд. БХВ, ISBN 978-5-9909805-3-2. [bhv.ru](https://bhv.ru/product/razrabotka-trebovanij-k-programmnomu-obespecheniyu-3-izd/) — практическое руководство: выявление, документирование, атрибуты требований, управление изменениями и трассировкой.
+
 ## Практическая польза
 
 - Аналитики тратят меньше времени на поиск повторов и сверку требований; руководитель проекта видит покрытие требований задачами и тестами.

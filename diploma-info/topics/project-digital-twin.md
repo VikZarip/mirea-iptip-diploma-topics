@@ -80,6 +80,14 @@
   - [Apache Jira Issue Tracking Dataset](https://zenodo.org/records/14253918): связь «переписка — задача» для проверки связывания;
   - собственный размеченный набор на русском: серии встреч, чат и задачи; часть серий — сценарные, с заранее известным правильным ответом.
 
+## Ключевые публикации
+
+- Rasmussen P. et al. *Zep: A Temporal Knowledge Graph Architecture for Agent Memory*. arXiv preprint, 2025. [arXiv:2501.13956](https://arxiv.org/abs/2501.13956) — темпоральный граф знаний как память LLM-агента; ближайший аналог пошаговой актуализации состояния.
+- Carletta J. et al. *The AMI Meeting Corpus: A Pre-announcement*. MLMI 2005, LNCS 3869, Springer, 2006. [doi:10.1007/11677482_3](https://doi.org/10.1007/11677482_3) — описание корпуса AMI (около 100 часов встреч с расшифровками, выжимками и разметкой); основной открытый набор для экспериментов.
+- Purver M. et al. *Detecting and Summarizing Action Items in Multi-Party Dialogue*. SIGdial Workshop, 2007. [ACL Anthology](https://aclanthology.org/2007.sigdial-1.4) — классическая работа об извлечении задач (action items) из многосторонних встреч.
+- Wu D. et al. *LongMemEval: Benchmarking Chat Assistants on Long-Term Interactive Memory*. ICLR, 2025. [arXiv:2410.10813](https://arxiv.org/abs/2410.10813) — бенчмарк долговременной памяти LLM, в том числе на обновление знаний; пригоден как методика оценки.
+- Liu N. F. et al. *Lost in the Middle: How Language Models Use Long Contexts*. TACL, 2024. [doi:10.1162/tacl_a_00638](https://doi.org/10.1162/tacl_a_00638) — эмпирически подтверждает тезис темы: на длинном контексте LLM теряет детали.
+
 ## Практическая польза
 
 Меньше ручной работы с протоколами и переносом задач в трекер, меньше забытых договорённостей, быстрее вход новых участников в проект.
