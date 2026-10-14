@@ -1,6 +1,6 @@
 # Зарезервированные темы
 
-> Эта страница генерируется автоматически. Последнее обновление: 14.10.2026, 13:29:19
+> Эта страница генерируется автоматически. Последнее обновление: 14.10.2026, 14:06:32
 
 ## Статистика
 
@@ -16,7 +16,7 @@
 | ФИО | Группа | Тема |
 |-----|--------|------|
 | Рузин Иван Александрович | ЭФМО-01-25 | [Методы построения и автоматической актуализации цифрового двойника проекта на основе разнородных неструктурированных источников](https://github.com/VikZarip/mirea-iptip-diploma-topics/blob/main/diploma-info/topics/project-digital-twin.md) |
-| Седова Мария Александровна | ЭФМО-01-25 | [Классификация жалоб клиентов / тикетов с автоматикой маршрутизации](https://github.com/VikZarip/mirea-iptip-diploma-topics/blob/main/diploma-info/topics/client-complaints-routing.md) |
+| Седова Мария Александровна | ЭФМО-01-25 | [Разработка метода автоматической классификации и маршрутизации обращений клиентов на основе моделей обработки естественного языка](https://github.com/VikZarip/mirea-iptip-diploma-topics/blob/main/diploma-info/topics/client-complaints-routing.md) |
 
 ---
 
@@ -29,11 +29,11 @@
 
 ## Темы по алфавиту
 
-### [Классификация жалоб клиентов / тикетов с автоматикой маршрутизации](https://github.com/VikZarip/mirea-iptip-diploma-topics/blob/main/diploma-info/topics/client-complaints-routing.md)
-
-- **Седова Мария Александровна** (ЭФМО-01-25 (магистр))
-
 ### [Методы построения и автоматической актуализации цифрового двойника проекта на основе разнородных неструктурированных источников](https://github.com/VikZarip/mirea-iptip-diploma-topics/blob/main/diploma-info/topics/project-digital-twin.md)
 
 - **Рузин Иван Александрович** (ЭФМО-01-25 (магистр))
+
+### [Разработка метода автоматической классификации и маршрутизации обращений клиентов на основе моделей обработки естественного языка](https://github.com/VikZarip/mirea-iptip-diploma-topics/blob/main/diploma-info/topics/client-complaints-routing.md)
+
+- **Седова Мария Александровна** (ЭФМО-01-25 (магистр))
 
