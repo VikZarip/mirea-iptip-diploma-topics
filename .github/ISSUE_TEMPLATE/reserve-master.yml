@@ -51,9 +51,6 @@ body:
         - social-workers-routing | Система оптимального планирования маршрутов социальных работников
         - urban-air-quality-monitoring | Интеллектуальная система мониторинга качества воздуха в городах
         - utility-consumption-forecast | Система умного учёта и прогнозирования потребления коммунальных ресурсов
-
-
-
     validations:
       required: true
   - type: input

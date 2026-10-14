@@ -49,6 +49,8 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add diploma-info/RESERVED_TOPICS.md
           git commit -m "docs: обновление списка зарезервированных тем [skip ci]"
+          # Update Topics Dropdown запускается на тот же push и может успеть запушить раньше
+          git pull --rebase origin main
           git push
 
       - name: Summary

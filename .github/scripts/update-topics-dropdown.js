@@ -54,7 +54,9 @@ for (const level of Object.values(LEVELS)) {
     console.error(`❌ В ${level.templateFile} не найден блок dropdown со slug`);
     process.exit(1);
   }
-  fs.writeFileSync(file, content.replace(optionsRegex, `$1${optionsLines}\n$3`), 'utf8');
+  // Пробелы перед validations: схлопываются в один перевод строки — иначе каждый запуск добавлял пустую строку
+  const updated = content.replace(optionsRegex, (_, head, _old, tail) => `${head}${optionsLines}\n${tail.replace(/^\s*\n/, '')}`);
+  fs.writeFileSync(file, updated, 'utf8');
   console.log(`✅ ${level.templateFile}: свободных тем ${topics.length}`);
 }
 
