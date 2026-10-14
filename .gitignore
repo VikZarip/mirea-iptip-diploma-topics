@@ -68,3 +68,6 @@ parse.js
 
 # Личный output style Claude Code
 .claude/output-styles/Док.md
+
+# Временные материалы
+diploma-info/_tmp/
