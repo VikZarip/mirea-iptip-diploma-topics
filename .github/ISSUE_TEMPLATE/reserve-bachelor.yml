@@ -1,0 +1,65 @@
+name: Резервация темы — бакалавриат
+description: Заявка студента бакалавриата на резервацию темы
+labels: [reservation, reservation-bachelor]
+title: "[Заявка] ФИО — <slug>"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Это форма для студентов уровня **бакалавриат**. Если вы учитесь в магистратуре, закройте форму и выберите другую.
+
+        После создания заявки тема будет автоматически переведена в статус «Зарезервирована», если она свободна и подходит вашему уровню.
+  - type: dropdown
+    id: level
+    attributes:
+      label: Уровень
+      description: Подтвердите уровень обучения. Он должен совпадать с вашей группой и с уровнем темы.
+      options:
+        - Бакалавриат
+    validations:
+      required: true
+  - type: input
+    id: fio
+    attributes:
+      label: ФИО студента
+      placeholder: Иванов Иван Иванович
+    validations:
+      required: true
+  - type: input
+    id: group
+    attributes:
+      label: Группа
+      description: Полный шифр группы, например ЭФБО-01-23
+      placeholder: ЭФБО-01-23
+    validations:
+      required: true
+  - type: dropdown
+    id: slug
+    attributes:
+      label: Выберите тему
+      description: Список обновляется автоматически и содержит только свободные темы для уровня «бакалавриат». Каталог — diploma-info/topics/
+      options:
+        - agile-retrospectives | Разработка веб-приложения для проведения ретроспектив и сбора обратной связи в agile-командах
+        - c4-architecture-diagrams | Разработка веб-сервиса автоматического построения диаграмм архитектуры (модель C4) по исходному коду и конфигурации репозитория
+        - event-storming-board | Разработка веб-приложения для совместного моделирования предметной области методом Event Storming
+        - requirements-management-traceability | Разработка веб-приложения для управления требованиями программного проекта с трассировкой и поиском дублирующихся требований
+        - tech-debt-tracker | Разработка веб-приложения для учёта и визуализации технического долга программного проекта с интеграцией с Git
+
+
+    validations:
+      required: true
+  - type: input
+    id: supervisor
+    attributes:
+      label: Научный руководитель
+      value: Зарипова В.М.
+    validations:
+      required: true
+  - type: input
+    id: access_code
+    attributes:
+      label: Код доступа
+      description: Получите код у куратора. Заявки без корректного кода автоматически отклоняются.
+      placeholder: XXXXX
+    validations:
+      required: true

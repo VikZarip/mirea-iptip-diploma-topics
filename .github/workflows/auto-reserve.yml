@@ -71,6 +71,7 @@ jobs:
             return value;
           }
           
+          const level = extractField(body, 'Уровень');
           const fio = extractField(body, 'ФИО студента');
           const group = extractField(body, 'Группа');
           const slugRaw = extractField(body, 'Выберите тему');
@@ -80,6 +81,7 @@ jobs:
           
           console.error(`\nExtracted slug: "${slug}"\n`);
           
+          console.log(`level=${level}`);
           console.log(`fio=${fio}`);
           console.log(`group=${group}`);
           console.log(`slug=${slug}`);
@@ -92,8 +94,12 @@ jobs:
       - name: Validate inputs
         id: validate
         continue-on-error: true
+        # Данные из заявки передаются через env, а не подстановкой в скрипт: так их нельзя исполнить как код
+        env:
+          SLUG: ${{ steps.extract.outputs.slug }}
+          FORM_LEVEL: ${{ steps.extract.outputs.level }}
+          GROUP: ${{ steps.extract.outputs.group }}
         run: |
-          SLUG="${{ steps.extract.outputs.slug }}"
           if [ -z "$SLUG" ]; then
             echo "error=empty_slug" >> $GITHUB_OUTPUT
             exit 1
@@ -111,22 +117,43 @@ jobs:
             echo "error=topic_taken" >> $GITHUB_OUTPUT
             exit 1
           fi
-          
+
+          # Уровень формы, группы и темы должны совпадать
+          node .github/scripts/check-reservation-level.js "$FILE" >> $GITHUB_OUTPUT || exit 1
+
           echo "success=true" >> $GITHUB_OUTPUT
 
       - name: Handle validation errors
         if: steps.validate.outputs.error != ''
         uses: actions/github-script@v7
+        env:
+          ERROR: ${{ steps.validate.outputs.error }}
+          SLUG: ${{ steps.extract.outputs.slug }}
+          GROUP_LEVEL: ${{ steps.validate.outputs.group_level }}
+          TOPIC_LEVEL: ${{ steps.validate.outputs.topic_level }}
         with:
           script: |
-            const error = '${{ steps.validate.outputs.error }}';
+            const error = process.env.ERROR;
+            const forms = `[Issues → New issue](https://github.com/${{ github.repository }}/issues/new/choose)`;
+            const catalog = `[каталога](https://github.com/${{ github.repository }}/tree/main/diploma-info/topics)`;
             let message = '';
-            
-            if (error === 'empty_slug') {
+
+            if (error === 'no_form_level') {
+              message = `❌ **Заявка отклонена:** не указан уровень обучения.\n\nСоздайте заявку через форму своего уровня: ${forms} → «Резервация темы — бакалавриат» или «Резервация темы — магистратура».`;
+            } else if (error === 'bad_group') {
+              message = '❌ **Заявка отклонена:** группа указана не в формате МИРЭА.\n\nУкажите полный шифр группы, например `ЭФБО-01-23` или `ЭФМО-01-25`, и создайте новую заявку.';
+            } else if (error === 'group_level_unknown') {
+              message = '❌ **Заявка отклонена:** по шифру группы нельзя определить уровень (третья буква должна быть Б — бакалавриат или М — магистратура).\n\nЕсли группа указана верно, обратитесь к куратору.';
+            } else if (error === 'group_level_mismatch') {
+              message = `❌ **Заявка отклонена:** форма не соответствует вашей группе — по шифру группы ваш уровень: **${process.env.GROUP_LEVEL}**.\n\nСоздайте заявку через форму своего уровня: ${forms}.`;
+            } else if (error === 'topic_no_level') {
+              message = '❌ **Заявка отклонена:** у темы не указан уровень обучения.\n\nЭто ошибка в каталоге, а не в вашей заявке. Обратитесь к куратору.';
+            } else if (error === 'topic_level_mismatch') {
+              message = `❌ **Заявка отклонена:** эта тема предназначена для уровня **${process.env.TOPIC_LEVEL}**.\n\nВыберите тему своего уровня из ${catalog}.`;
+            } else if (error === 'empty_slug') {
               message = '❌ **Заявка отклонена:** Не указан slug темы.\n\nПожалуйста, заполните форму корректно и создайте новую заявку.';
             } else if (error === 'file_not_found') {
-              const file = '${{ steps.validate.outputs.file }}';
-              message = `❌ **Заявка отклонена:** Тема с slug \`${{ steps.extract.outputs.slug }}\` не найдена.\n\nПроверьте правильность slug (имя файла без \`.md\`) в каталоге [topics](https://github.com/${{ github.repository }}/tree/main/diploma-info/topics).`;
+              message = `❌ **Заявка отклонена:** Тема с slug \`${process.env.SLUG}\` не найдена.\n\nПроверьте правильность slug (имя файла без \`.md\`) в каталоге [topics](https://github.com/${{ github.repository }}/tree/main/diploma-info/topics).`;
             } else if (error === 'topic_taken') {
               message = '❌ **Заявка отклонена:** Тема **уже зарезервирована** другим студентом.\n\nПожалуйста, выберите другую тему из [каталога](https://github.com/${{ github.repository }}/tree/main/diploma-info/topics) со статусом "Свободно".';
             }
@@ -203,7 +230,7 @@ jobs:
         env:
           FILE_PATH: diploma-info/topics/${{ steps.extract.outputs.slug }}.md
           FIO: ${{ steps.extract.outputs.fio }}
-          GROUP: ${{ steps.extract.outputs.group }}
+          GROUP: ${{ steps.validate.outputs.group }}
           SUPERVISOR: ${{ steps.extract.outputs.supervisor }}
         run: |
           node - <<'NODE'
@@ -247,12 +274,17 @@ jobs:
       - name: Notify success
         if: success()
         uses: actions/github-script@v7
+        env:
+          SLUG: ${{ steps.extract.outputs.slug }}
+          FIO: ${{ steps.extract.outputs.fio }}
+          GROUP: ${{ steps.validate.outputs.group }}
+          SUPERVISOR: ${{ steps.extract.outputs.supervisor }}
         with:
           script: |
-            const slug = '${{ steps.extract.outputs.slug }}';
-            const fio = '${{ steps.extract.outputs.fio }}';
-            const group = '${{ steps.extract.outputs.group }}';
-            const supervisor = '${{ steps.extract.outputs.supervisor }}';
+            const slug = process.env.SLUG;
+            const fio = process.env.FIO;
+            const group = process.env.GROUP;
+            const supervisor = process.env.SUPERVISOR;
             
             const studentInfo = group ? `${fio} (${group})` : fio;
             

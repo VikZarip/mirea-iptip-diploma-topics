@@ -1,14 +1,26 @@
-name: Предложение новой темы
-description: Студент предлагает свою тему дипломного проекта на рассмотрение
-labels: [topic-proposal]
+name: Предложение темы — магистратура
+description: Магистрант предлагает свою тему ВКР на рассмотрение
+labels: [topic-proposal, proposal-master]
 title: "[Предложение] <краткое название темы>"
 body:
   - type: markdown
     attributes:
       value: |
-        ## 📝 Предложение новой темы дипломного проекта
-        
-        Заполните форму для предложения своей темы. После рассмотрения куратором тема будет добавлена в каталог или отправлена на доработку.
+        ## 📝 Предложение темы магистерской ВКР
+
+        Магистерская ВКР — научная или научно-практическая работа: **научная новизна, гипотеза и эксперимент обязательны**, по материалам работы нужна статья. Требования: [master.md](https://github.com/VikZarip/mirea-iptip-diploma-topics/blob/main/diploma-info/requirements/master.md).
+
+        Если вы учитесь в бакалавриате, закройте форму и выберите «Предложение темы — бакалавриат».
+
+  - type: dropdown
+    id: level
+    attributes:
+      label: Уровень
+      description: Подтвердите уровень обучения. Он должен совпадать с вашей группой.
+      options:
+        - Магистратура
+    validations:
+      required: true
 
   - type: input
     id: fio
@@ -22,7 +34,8 @@ body:
     id: group
     attributes:
       label: Группа
-      placeholder: ИКБО-01-21
+      description: Полный шифр группы, например ЭФМО-01-25
+      placeholder: ЭФМО-01-25
     validations:
       required: true
 
@@ -112,6 +125,16 @@ body:
       required: true
 
   - type: textarea
+    id: hypothesis
+    attributes:
+      label: Гипотеза исследования
+      description: Проверяемое утверждение, которое подтвердит или опровергнет эксперимент
+      placeholder: |
+        Пошаговая актуализация модели точнее определяет статус задач, чем обработка всей истории целиком.
+    validations:
+      required: true
+
+  - type: textarea
     id: methods
     attributes:
       label: Методы, модели и данные
@@ -120,7 +143,27 @@ body:
         - Методы: LSTM, Prophet, XGBoost
         - Данные: метрики Prometheus, логи nginx
     validations:
-      required: false
+      required: true
+
+  - type: textarea
+    id: experiment
+    attributes:
+      label: План эксперимента
+      description: С какими базовыми подходами (baseline) сравниваете, на каких данных, по каким метрикам
+      placeholder: |
+        - Baseline: обработка каждой встречи отдельно; полный пересчёт истории
+        - Данные: AMI Meeting Corpus + свой размеченный набор
+        - Метрики: F1 извлечения, доля верных статусов
+    validations:
+      required: true
+
+  - type: textarea
+    id: literature
+    attributes:
+      label: Ключевые публикации
+      description: 3–5 научных работ, на которые опирается тема (включая иностранные)
+    validations:
+      required: true
 
   - type: textarea
     id: practical_value
@@ -156,7 +199,8 @@ body:
         2. Проектирование архитектуры системы (ноябрь)
         3. Разработка прототипа (декабрь-январь)
         4. Тестирование и оптимизация (февраль-март)
-        5. Подготовка документации и статьи (апрель-май)
+        5. Статья по материалам работы (к марту)
+        6. Подготовка текста ВКР и защита (апрель-май)
     validations:
       required: true
 

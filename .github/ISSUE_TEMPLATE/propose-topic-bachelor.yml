@@ -1,0 +1,175 @@
+name: Предложение темы — бакалавриат
+description: Студент бакалавриата предлагает свою тему ВКР на рассмотрение
+labels: [topic-proposal, proposal-bachelor]
+title: "[Предложение] <краткое название темы>"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 📝 Предложение темы бакалаврской ВКР
+
+        Бакалаврская ВКР — инженерный проект полного цикла разработки ПО: анализ → проектирование → реализация. **Научная новизна и гипотезы не требуются.** Важно показать, какой процесс вы автоматизируете, чем ваше решение лучше аналогов и какую характеристику оно улучшает. Требования: [bachelor-2026-27.md](https://github.com/VikZarip/mirea-iptip-diploma-topics/blob/main/diploma-info/requirements/bachelor-2026-27.md).
+
+        Если вы учитесь в магистратуре, закройте форму и выберите «Предложение темы — магистратура».
+
+  - type: dropdown
+    id: level
+    attributes:
+      label: Уровень
+      description: Подтвердите уровень обучения. Он должен совпадать с вашей группой.
+      options:
+        - Бакалавриат
+    validations:
+      required: true
+
+  - type: input
+    id: fio
+    attributes:
+      label: ФИО студента
+      placeholder: Иванов Иван Иванович
+    validations:
+      required: true
+
+  - type: input
+    id: group
+    attributes:
+      label: Группа
+      description: Полный шифр группы, например ЭФБО-01-23
+      placeholder: ЭФБО-01-23
+    validations:
+      required: true
+
+  - type: input
+    id: title
+    attributes:
+      label: Название темы
+      description: Обычно начинается со слов «Разработка веб-приложения / сервиса / системы для …»
+      placeholder: Разработка веб-приложения для учёта заявок на ремонт оборудования
+    validations:
+      required: true
+
+  - type: input
+    id: slug
+    attributes:
+      label: Предлагаемый slug
+      description: Короткое имя для файла темы (латиница, через дефис)
+      placeholder: equipment-repair-requests
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Краткое описание
+      description: Что за продукт и какую проблему он решает (2–4 предложения)
+    validations:
+      required: true
+
+  - type: textarea
+    id: as_is
+    attributes:
+      label: Как задача решается сейчас (AS-IS)
+      description: Кто сейчас выполняет процесс, какими средствами, что в нём неудобно или медленно
+      placeholder: |
+        Заявки принимаются по почте и в чате, мастер ведёт их в Excel. Заявки теряются, статус нельзя узнать без звонка.
+    validations:
+      required: true
+
+  - type: textarea
+    id: analogs
+    attributes:
+      label: Аналоги
+      description: 2–3 существующих решения и чего в них не хватает именно для вашего случая
+      placeholder: |
+        - Jira Service Management — избыточна и платная для маленькой службы
+        - Google Forms + Таблицы — нет статусов и уведомлений
+    validations:
+      required: true
+
+  - type: textarea
+    id: improvement
+    attributes:
+      label: Какую характеристику улучшает решение
+      description: Цель бакалаврской ВКР формулируется через улучшение измеримой характеристики процесса
+      placeholder: |
+        Сократить время от подачи заявки до назначения мастера с ~1 дня до 1 часа.
+    validations:
+      required: true
+
+  - type: textarea
+    id: functions
+    attributes:
+      label: Функции MVP
+      description: Что обязательно войдёт в первую рабочую версию; отдельно отметьте функции «если останется время»
+    validations:
+      required: true
+
+  - type: textarea
+    id: use_cases
+    attributes:
+      label: Основные сценарии использования
+      description: Роли, шаги, результат
+      placeholder: |
+        - Сотрудник подаёт заявку и видит её статус
+        - Мастер берёт заявку в работу и закрывает её
+    validations:
+      required: true
+
+  - type: textarea
+    id: tech_stack
+    attributes:
+      label: Технологический стек
+      description: Фронтенд, бэкенд, база данных, развёртывание
+      placeholder: |
+        - React + TypeScript
+        - FastAPI, PostgreSQL
+        - Docker
+    validations:
+      required: true
+
+  - type: textarea
+    id: metrics
+    attributes:
+      label: Метрики «до/после»
+      description: Как вы покажете, что характеристика улучшилась
+      placeholder: |
+        - Время назначения заявки: было ~1 день, цель < 1 часа
+        - Доля потерянных заявок: было ~10%, цель 0
+    validations:
+      required: true
+
+  - type: textarea
+    id: project_plan
+    attributes:
+      label: Этапы проекта (план студента)
+      description: Предварительный план с ориентировочными сроками
+      placeholder: |
+        1. Анализ предметной области, аналоги, требования (октябрь–ноябрь)
+        2. Проектирование: архитектура, ER-модель, макеты (декабрь)
+        3. Реализация MVP (январь–март)
+        4. Тестирование, метрики «до/после», текст ВКР (апрель–май)
+    validations:
+      required: true
+
+  - type: textarea
+    id: data_sources
+    attributes:
+      label: Источники данных
+      description: Откуда возьмёте данные для работы и демонстрации (если применимо)
+    validations:
+      required: false
+
+  - type: input
+    id: supervisor
+    attributes:
+      label: Научный руководитель (если согласован)
+      value: Зарипова В.М.
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional_info
+    attributes:
+      label: Дополнительная информация
+    validations:
+      required: false

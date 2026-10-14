@@ -12,6 +12,31 @@ gh label create "reservation" \
   --color "0E8A16" \
   --force
 
+gh label create "reservation-bachelor" \
+  --description "Резервация темы — бакалавриат" \
+  --color "0E8A16" \
+  --force
+
+gh label create "reservation-master" \
+  --description "Резервация темы — магистратура" \
+  --color "0E8A16" \
+  --force
+
+gh label create "proposal-bachelor" \
+  --description "Предложение темы — бакалавриат" \
+  --color "1D76DB" \
+  --force
+
+gh label create "proposal-master" \
+  --description "Предложение темы — магистратура" \
+  --color "1D76DB" \
+  --force
+
+gh label create "level-mismatch" \
+  --description "Уровень формы не совпадает с группой студента" \
+  --color "D93F0B" \
+  --force
+
 gh label create "topic-proposal" \
   --description "Предложение новой темы" \
   --color "1D76DB" \

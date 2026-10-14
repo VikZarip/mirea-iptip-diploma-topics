@@ -7,6 +7,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { topicLevel, groupLevel } = require('./levels');
 
 const TOPICS_DIR = path.join(__dirname, '../../diploma-info/topics');
 const OUTPUT_FILE = path.join(__dirname, '../../diploma-info/RESERVED_TOPICS.md');
@@ -77,34 +78,17 @@ function parseTopicFile(filePath, slug) {
   return {
     slug,
     title,
+    level: topicLevel(content),
     students
   };
 }
 
 /**
- * Определяет, является ли группа магистерской (год >= 2024)
+ * Магистр ли студент: по уровню темы, а для темы без уровня — по букве группы (ЭФМО → М).
  */
-function isMasterGroup(group) {
-  // Извлекаем год из группы
-  // Формат 1: ЭФБО-05-22 -> 22
-  // Формат 2: ПИМО-01-2024 -> 2024
-  
-  // Сначала пробуем 4-значный год
-  let yearMatch = group.match(/-(\d{4})$/);
-  if (yearMatch) {
-    const year = parseInt(yearMatch[1], 10);
-    return year >= 2024;
-  }
-  
-  // Затем 2-значный год
-  yearMatch = group.match(/-(\d{2})$/);
-  if (yearMatch) {
-    const year = parseInt(yearMatch[1], 10);
-    // Считаем, что 24+ это 2024+, а меньше - это 20xx
-    return year >= 24;
-  }
-  
-  return false;
+function isMaster(topic, group) {
+  const level = topic.level || groupLevel(group).level;
+  return level?.id === 'master';
 }
 
 /**
@@ -147,7 +131,7 @@ function generateMarkdownTable(topics) {
       studentRecords.push({
         fio: student.fio,
         group: student.group,
-        isMaster: isMasterGroup(student.group),
+        isMaster: isMaster(topic, student.group),
         topicTitle: topic.title,
         topicSlug: topic.slug
       });
@@ -209,7 +193,7 @@ function generateMarkdownTable(topics) {
     markdown += `### [${topic.title}](${REPO_BASE}/diploma-info/topics/${topic.slug}.md)\n\n`;
     
     for (const student of topic.students) {
-      const groupDisplay = isMasterGroup(student.group)
+      const groupDisplay = isMaster(topic, student.group)
         ? `${student.group} (магистр)`
         : student.group;
       

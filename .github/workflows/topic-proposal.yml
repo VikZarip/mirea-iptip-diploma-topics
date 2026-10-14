@@ -11,39 +11,87 @@ jobs:
     permissions:
       issues: write
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: Add acknowledgment comment
         uses: actions/github-script@v7
+        # Текст заявки передаётся через env, а не подстановкой в скрипт: так его нельзя исполнить как код
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          AUTHOR: ${{ github.event.issue.user.login }}
         with:
           script: |
+            const { LEVELS, formLevel, groupLevel } = require(`${process.env.GITHUB_WORKSPACE}/.github/scripts/levels.js`);
+
+            const body = process.env.ISSUE_BODY || '';
+            const field = (label) => {
+              const m = body.match(new RegExp(`### ${label}\\s*\\n\\s*(.+?)(?=\\n###|$)`, 's'));
+              return m ? m[1].trim() : '';
+            };
+
+            const form = formLevel(field('Уровень'));
+            const group = groupLevel(field('Группа'));
+
+            const criteria = {
+              bachelor: [
+                '✅ **Реальный процесс** — понятно, кто и как решает задачу сейчас (AS-IS)?',
+                '✅ **Аналоги** — чем решение лучше существующих для этого случая?',
+                '✅ **Измеримое улучшение** — какая характеристика станет лучше и как это показать?',
+                '✅ **Реализуемость** — успеете ли сделать работающий MVP за год?',
+              ],
+              master: [
+                '✅ **Научная новизна** — что нового по сравнению с опубликованными работами?',
+                '✅ **Проверяемая гипотеза** — понятно, какой эксперимент её подтвердит или опровергнет?',
+                '✅ **Эксперимент** — есть данные, базовые подходы для сравнения и метрики?',
+                '✅ **Статья** — хватит ли результатов на публикацию?',
+              ],
+            };
+
+            const lines = [
+              '👋 Спасибо за предложение новой темы!',
+              '',
+              `**Студент:** @${process.env.AUTHOR}`,
+            ];
+            if (form) lines.push(`**Уровень:** ${form.topicValue}`);
+            lines.push('');
+
+            const labels = ['pending-review'];
+            if (!form) {
+              lines.push('⚠️ **Не указан уровень обучения.** Похоже, заявка создана не через форму. Куратор уточнит уровень при рассмотрении.', '');
+            } else if (!group.valid || !group.level) {
+              lines.push('⚠️ **Не удалось определить уровень по группе.** Проверьте шифр группы, например `ЭФБО-01-23` или `ЭФМО-01-25`.', '');
+            } else if (group.level.id !== form.id) {
+              labels.push('level-mismatch');
+              lines.push(`⚠️ **Форма не соответствует группе:** по шифру группы ваш уровень — **${group.level.topicValue}**, а заявка подана через форму «${form.formValue}». Требования к темам разные: создайте заявку заново через форму своего уровня.`, '');
+            }
+
+            lines.push(
+              '---',
+              '',
+              '### Что дальше?',
+              '',
+              '1. **Куратор рассмотрит** ваше предложение в ближайшее время',
+              '2. Возможно, потребуются **уточнения или доработка** — следите за комментариями',
+              '3. После одобрения тема будет **добавлена в каталог** и вы сможете её зарезервировать',
+              '',
+              '### Критерии оценки:',
+              '',
+              ...criteria[form ? form.id : LEVELS.master.id],
+              '',
+              '**Ожидайте ответа куратора в этом Issue.** 📧',
+            );
+
             await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.issue.number,
-              body: `👋 Спасибо за предложение новой темы!
-
-**Студент:** ${{ github.event.issue.user.login }}
-
----
-
-### Что дальше?
-
-1. **Куратор рассмотрит** ваше предложение в ближайшее время
-2. Возможно, потребуются **уточнения или доработка** — следите за комментариями
-3. После одобрения тема будет **добавлена в каталог** и вы сможете её зарезервировать
-
-### Критерии оценки:
-
-✅ **Актуальность** — решает ли тема реальную проблему?  
-✅ **Реализуемость** — можно ли выполнить за отведённое время?  
-✅ **Научная ценность** — есть ли элементы исследования?  
-✅ **Практическая польза** — кому и как это поможет?
-
-**Ожидайте ответа куратора в этом Issue.** 📧`
+              body: lines.join('\n'),
             });
-            
+
             await github.rest.issues.addLabels({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.issue.number,
-              labels: ['pending-review']
+              labels,
             });
