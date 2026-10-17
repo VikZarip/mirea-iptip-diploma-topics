@@ -1,13 +1,13 @@
 # Зарезервированные темы
 
-> Эта страница генерируется автоматически. Последнее обновление: 17.10.2026, 18:10:06
+> Эта страница генерируется автоматически. Последнее обновление: 17.10.2026, 18:26:56
 
 ## Статистика
 
-- **Всего зарезервировано тем:** 6
-- **Всего студентов:** 6
+- **Всего зарезервировано тем:** 7
+- **Всего студентов:** 7
   - Магистров: 3
-  - Бакалавров: 3
+  - Бакалавров: 4
 
 ---
 
@@ -28,6 +28,7 @@
 | Горбунов Клим Вячеславович | ЭФБО-09-23 | [Разработка веб-приложения для проведения ретроспектив и сбора обратной связи в agile-командах](https://github.com/VikZarip/mirea-iptip-diploma-topics/blob/main/diploma-info/topics/agile-retrospectives.md) |
 | Карсаков Михаи Андреевич | ЭФБО-02-23 | [Разработка веб-приложения для управления требованиями программного проекта с трассировкой и поиском дублирующихся требований](https://github.com/VikZarip/mirea-iptip-diploma-topics/blob/main/diploma-info/topics/requirements-management-traceability.md) |
 | Кузнецов Матвей Дмитриевич | ЭФБО-09-23 | [Разработка веб-приложения для учёта и визуализации технического долга программного проекта с интеграцией с Git](https://github.com/VikZarip/mirea-iptip-diploma-topics/blob/main/diploma-info/topics/tech-debt-tracker.md) |
+| Малыгин Артем Валерьевич | ЭФБО-09-23 | [Разработка веб-приложения для совместного моделирования предметной области методом Event Storming](https://github.com/VikZarip/mirea-iptip-diploma-topics/blob/main/diploma-info/topics/event-storming-board.md) |
 
 ---
 
@@ -40,6 +41,10 @@
 ### [Разработка веб-приложения для проведения ретроспектив и сбора обратной связи в agile-командах](https://github.com/VikZarip/mirea-iptip-diploma-topics/blob/main/diploma-info/topics/agile-retrospectives.md)
 
 - **Горбунов Клим Вячеславович** (ЭФБО-09-23)
+
+### [Разработка веб-приложения для совместного моделирования предметной области методом Event Storming](https://github.com/VikZarip/mirea-iptip-diploma-topics/blob/main/diploma-info/topics/event-storming-board.md)
+
+- **Малыгин Артем Валерьевич** (ЭФБО-09-23)
 
 ### [Разработка веб-приложения для управления требованиями программного проекта с трассировкой и поиском дублирующихся требований](https://github.com/VikZarip/mirea-iptip-diploma-topics/blob/main/diploma-info/topics/requirements-management-traceability.md)
 
