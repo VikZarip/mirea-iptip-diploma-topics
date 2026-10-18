@@ -1,6 +1,6 @@
 # Зарезервированные темы
 
-> Эта страница генерируется автоматически. Последнее обновление: 18.10.2026, 01:07:58
+> Эта страница генерируется автоматически. Последнее обновление: 18.10.2026, 13:06:41
 
 ## Статистика
 
@@ -26,10 +26,10 @@
 | ФИО | Группа | Тема |
 |-----|--------|------|
 | Горбунов Клим Вячеславович | ЭФБО-09-23 | [Разработка веб-приложения для проведения ретроспектив и сбора обратной связи в agile-командах](https://github.com/VikZarip/mirea-iptip-diploma-topics/blob/main/diploma-info/topics/agile-retrospectives.md) |
-| Карсаков Михаи Андреевич | ЭФБО-02-23 | [Разработка веб-приложения для управления требованиями программного проекта с трассировкой и поиском дублирующихся требований](https://github.com/VikZarip/mirea-iptip-diploma-topics/blob/main/diploma-info/topics/requirements-management-traceability.md) |
+| Карсаков Михаил Андреевич | ЭФБО-02-23 | [Разработка веб-приложения для управления требованиями программного проекта с трассировкой и поиском дублирующихся требований](https://github.com/VikZarip/mirea-iptip-diploma-topics/blob/main/diploma-info/topics/requirements-management-traceability.md) |
 | Кузнецов Матвей Дмитриевич | ЭФБО-09-23 | [Разработка веб-приложения для учёта и визуализации технического долга программного проекта с интеграцией с Git](https://github.com/VikZarip/mirea-iptip-diploma-topics/blob/main/diploma-info/topics/tech-debt-tracker.md) |
 | Малыгин Артем Валерьевич | ЭФБО-09-23 | [Разработка веб-приложения для совместного моделирования предметной области методом Event Storming](https://github.com/VikZarip/mirea-iptip-diploma-topics/blob/main/diploma-info/topics/event-storming-board.md) |
-| Полянская Полина Евгеньевна | ЭФБО-02-23 | [Разработка веб-сервиса автоматического построения диаграмм архитектуры (модель C4) по исходному коду и конфигурации репозитория](https://github.com/VikZarip/mirea-iptip-diploma-topics/blob/main/diploma-info/topics/c4-architecture-diagrams.md) |
+| Полянская Полина Евгеньевна | ЭФБО-02-23 | [Разработка веб-сервиса для генерации автотестов на основе инвариантов, извлечённых из ручных тест-кейсов с помощью LLM](https://github.com/VikZarip/mirea-iptip-diploma-topics/blob/main/diploma-info/topics/test-case-invariants.md) |
 
 ---
 
@@ -49,13 +49,13 @@
 
 ### [Разработка веб-приложения для управления требованиями программного проекта с трассировкой и поиском дублирующихся требований](https://github.com/VikZarip/mirea-iptip-diploma-topics/blob/main/diploma-info/topics/requirements-management-traceability.md)
 
-- **Карсаков Михаи Андреевич** (ЭФБО-02-23)
+- **Карсаков Михаил Андреевич** (ЭФБО-02-23)
 
 ### [Разработка веб-приложения для учёта и визуализации технического долга программного проекта с интеграцией с Git](https://github.com/VikZarip/mirea-iptip-diploma-topics/blob/main/diploma-info/topics/tech-debt-tracker.md)
 
 - **Кузнецов Матвей Дмитриевич** (ЭФБО-09-23)
 
-### [Разработка веб-сервиса автоматического построения диаграмм архитектуры (модель C4) по исходному коду и конфигурации репозитория](https://github.com/VikZarip/mirea-iptip-diploma-topics/blob/main/diploma-info/topics/c4-architecture-diagrams.md)
+### [Разработка веб-сервиса для генерации автотестов на основе инвариантов, извлечённых из ручных тест-кейсов с помощью LLM](https://github.com/VikZarip/mirea-iptip-diploma-topics/blob/main/diploma-info/topics/test-case-invariants.md)
 
 - **Полянская Полина Евгеньевна** (ЭФБО-02-23)
 

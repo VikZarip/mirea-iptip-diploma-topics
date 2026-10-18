@@ -263,6 +263,11 @@ jobs:
           chmod +x .github/scripts/generate-reserved-topics.js
           node .github/scripts/generate-reserved-topics.js
 
+      # Push через GITHUB_TOKEN не запускает update-topics-list, поэтому формы обновляются здесь же,
+      # иначе занятая тема остаётся в выпадающем списке до следующего ручного push
+      - name: Update reservation forms
+        run: node .github/scripts/update-topics-dropdown.js
+
       - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"
