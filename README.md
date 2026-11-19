@@ -88,9 +88,12 @@
 
 ### Быстрый старт
 
+> 📅 **[График дипломного проекта 2026/27](diploma-info/guides/diploma-timeline.md)** — сроки защиты глав, предзащит, сдачи текста и защиты. Сверяйтесь с ним весь год.
+
 **Начинающим (прочитайте в первую очередь):**
-1. [110-methodology.md](diploma-info/guides/110-methodology.md) — Методология исследования
-2. [120-timemanagement.md](diploma-info/guides/120-timemanagement.md) — Тайм-менеджмент
+1. [diploma-timeline.md](diploma-info/guides/diploma-timeline.md) — График и методика работы: презентация по главе → текст
+2. [110-methodology.md](diploma-info/guides/110-methodology.md) — Методология исследования
+3. [120-timemanagement.md](diploma-info/guides/120-timemanagement.md) — Тайм-менеджмент
 
 **Для проектирования системы:**
 - [140-system-dev.md](diploma-info/guides/140-system-dev.md) — Проектирование систем
@@ -131,7 +134,7 @@
 **Подготовка:**
 - [ ] Открыл [требования своего уровня](diploma-info/requirements/README.md) (бакалавр / магистр / ВКРС) и держу их рядом при написании каждой главы
 - [ ] Изучил [гайды](diploma-info/guides/README.md) по методологии
-- [ ] Составил план работы (этапы, сроки)
+- [ ] Внёс в свой календарь сроки из [графика дипломного проекта](diploma-info/guides/diploma-timeline.md)
 - [ ] Настроил локальную среду разработки
 
 **В процессе работы:**
